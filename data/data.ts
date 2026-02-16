@@ -7,12 +7,12 @@ export const navItems = [
   {
     id: 2,
     label: "About",
-    href: "/about",
+    href: "#about",
   },
   {
     id: 3,
     label: "Projects",
-    href: "/projects",
+    href: "#projects",
   },
 ];
 
