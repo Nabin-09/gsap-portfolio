@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
+import CustomCursor from "@/components/CustomCursor";
 export const bebasNeue = localFont({
   src : [
     {
@@ -36,16 +37,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${bebasNeue.variable} ${pally.className} antialiased`}
       >
-        <Header/>
-        <main className="min-h-svh">
-            {children}
-        </main>
-        {children}
+        <CustomCursor />
+        <Header />
+        <main className="min-h-svh">{children}</main>
       </body>
     </html>
   );
 }
+

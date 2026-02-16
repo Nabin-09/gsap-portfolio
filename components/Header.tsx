@@ -28,26 +28,43 @@ const Header = () => {
              }).from('.link' , {
                 y : 20 ,
                 opacity : 0 ,
-                stagger : 0.08
+                stagger : 0.08,
+                duration : 0.4,
+                ease : 'power3.out'
              },
             '-=0.2')
     })
+
+    const handleClick = ()=>{
+        setIsOpen((prev)=>{
+            const next = !prev
+            if(next){
+                tlRef.current?.play()
+            }else{
+                tlRef.current?.reverse()
+            }
+            return next;
+        })
+    }
     return <header className='sticky top-0 left-0 w-full bg-stone-100/200 backdrop-blur-sm z-50 '>
         <div className="container flex items-center justify-between py-4">
             <Link href='/' className='font-bebasNeue text-[32px]'>NS</Link>
             {/* Mobile Menu */}
             <nav className="lg:hidden">
-                <button className="bg-black size-10 text-white flex items-center justify-center rounded-xl hover:bg-black/80 transition">
-                    <Menu/>
+                <button 
+                onClick={handleClick}
+                className="bg-black size-10 text-white flex items-center justify-center rounded-xl hover:bg-black/80 transition">
+                    {isOpen ? <X/> : <Menu/>}
                     {/* <X/> */}
                 </button>
                 {/* list */}
                 <ul ref = {MenuRef} className="fixed top-full w-full bg-stone-900 left-0 text-stone-50 h-62.5  flex items-center justify-center flex-col
                 opacity-0 invisible">
+
                     {navItems.map(item =>(
                         <li key={item.id}>
-                            <Link href={item.href} className='font-bebasNeue
-                            text-4xl '>{item.label}</Link>
+                            <Link href={item.href} className='link block font-bebasNeue
+                            text-4xl ' onClick={handleClick}>{item.label}</Link>
                         </li>
                     )) }
                 </ul>
@@ -59,7 +76,7 @@ const Header = () => {
                 <ul className="flex items-center gap-11">
                     {navItems.map(item =>(
                         <li key={item.id}>
-                            <Link href={item.href} className='uppercase'>{item.label}</Link>
+                            <Link href={item.href} className='uppercase hover:text-black/70 transition'>{item.label}</Link>
                         </li>
                     )) }
                 </ul>
