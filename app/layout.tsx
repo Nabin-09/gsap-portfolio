@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/Header";
 export const bebasNeue = localFont({
   src : [
     {
@@ -37,8 +38,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bebasNeue.variable} ${pally.variable} antialiased`}
+        className={`${bebasNeue.variable} ${pally.className} antialiased`}
       >
+        <Header/>
+        <main className="min-h-svh">
+            {children}
+        </main>
         {children}
       </body>
     </html>
