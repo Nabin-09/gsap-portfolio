@@ -1,11 +1,17 @@
-import React from 'react'
-
-const Home = () => {
+import {ReactLenis} from 'lenis/react'
+import Hero from '@/components/Hero'
+import About from '@/components/About'
+import Projects from '@/components/Projects'
+import Timeline from '@/components/Timeline'
+import Contact from '@/components/Contact'
+export default function page() {
   return (
-    <div>
-        Home
-    </div>
+    <ReactLenis root>
+      <Hero/>
+      <About/>
+      <Projects/>
+      <Timeline/>
+      <Contact/>
+    </ReactLenis>
   )
 }
-
-export default Home
