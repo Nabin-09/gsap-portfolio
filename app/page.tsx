@@ -1,16 +1,17 @@
-import React from 'react'
+import {ReactLenis} from 'lenis/react'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Projects from '@/components/Projects'
 import Timeline from '@/components/Timeline'
+import Contact from '@/components/Contact'
 export default function page() {
   return (
-    <div>
-
+    <ReactLenis root>
       <Hero/>
       <About/>
       <Projects/>
       <Timeline/>
-    </div>
+      <Contact/>
+    </ReactLenis>
   )
 }
